@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Игра</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+            color: white;
+        }
+
+        iframe {
+            width: 800px;
+            height: 600px;
+            border: none;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="gameFrame" src="https://example.com/unity-game"></iframe>
+    <button id="sendData">Отправить данные</button>
+
+    <script>
+        document.getElementById("sendData").addEventListener("click", function () {
+            const iframe = document.getElementById("gameFrame");
+
+            // Данные, которые отправляем в Unity
+            const data = {
+                action: "updateScore",
+                value: 150
+            };
+
+            // Отправка сообщения в iframe
+            iframe.contentWindow.postMessage(data, "https://example.com/unity-game");
+        });
+    </script>
+</body>
+</html>
