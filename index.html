@@ -17,7 +17,7 @@
         }
 
         iframe {
-            width: 800px;
+            ifra width: 800px;
             height: 600px;
             border: none;
         }
@@ -31,10 +31,17 @@
     </style>
 </head>
 <body>
-    <iframe id="gameFrame" src="https://taduar2001.github.io/game51"></iframe>
+    <iframe id="gameFrame" src="https://taduar2001.github.io/Game2"></iframe>
     <button id="sendData">Отправить данные</button>
 
     <script>
+        window.addEventListener('message', function (event) {
+            const data = event.data;
+
+            if (data.action === 'gameOver') {
+                console.log('Игра завершена. Счёт:', data.score);
+            }
+        });
         document.getElementById("sendData").addEventListener("click", function () {
             const iframe = document.getElementById("gameFrame");
 
@@ -46,7 +53,7 @@
             };
 
             // Отправка сообщения в iframe
-            iframe.contentWindow.postMessage(data, "https://taduar2001.github.io/game51");
+            iframe.contentWindow.postMessage(data, "https://taduar2001.github.io/Game2");
         });
     </script>
 </body>
